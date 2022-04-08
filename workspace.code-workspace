@@ -1,0 +1,17 @@
+{
+  "folders": [
+	{
+		"path": "..\\PythonWorkspace"
+	},
+	{
+		"path": "."
+	},
+	{
+		"path": "..\\ogp index converter"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "django-datta-able-master",
+    "prettier.endOfLine": "auto"
+  }
+}
