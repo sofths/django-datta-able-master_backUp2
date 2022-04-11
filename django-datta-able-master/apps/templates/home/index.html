@@ -10,59 +10,59 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="../gauge/js/jQuery-plugin-progressbar.js"></script>
-<link rel="stylesheet" href="../gauge/css/jQuery-plugin-progressbar.css">
+<!--<script src="../gauge/js/jQuery-plugin-progressbar.js"></script>-->
+<!--<link rel="stylesheet" href="../gauge/css/jQuery-plugin-progressbar.css">-->
 
 
 <style>
-.gauge {
-  width: 100%;
-  max-width: 250px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 32px;
-  color: #004033;
-}
+    .gauge {
+      width: 100%;
+      max-width: 250px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 32px;
+      color: #004033;
+    }
 
-.gauge__body {
-  width: 100%;
-  height: 0;
-  padding-bottom: 50%;
-  background: #b4c0be;
-  position: relative;
-  border-top-left-radius: 100% 200%;
-  border-top-right-radius: 100% 200%;
-  overflow: hidden;
-}
+    .gauge_body {
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%;
+      background: #b4c0be;
+      position: relative;
+      border-top-left-radius: 100% 200%;
+      border-top-right-radius: 100% 200%;
+      overflow: hidden;
+    }
 
-.gauge__fill {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: inherit;
-  height: 100%;
-  background: #009578;
-  transform-origin: center top;
-  transform: rotate(0.25turn);
-  transition: transform 0.2s ease-out;
-}
+    .gauge_fill {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: inherit;
+      height: 100%;
+      background: #009578;
+      transform-origin: center top;
+      transform: rotate(0.25turn);
+      transition: transform 0.2s ease-out;
+    }
 
-.gauge__cover {
-  width: 75%;
-  height: 150%;
-  background: #ffffff;
-  border-radius: 50%;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
+    .gauge_cover {
+      width: 75%;
+      height: 150%;
+      background: #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
 
-  /* Text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 25%;
-  box-sizing: border-box;
-}
+      /* Text */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 25%;
+      box-sizing: border-box;
+    }
 
     meter {
         width: 70%;
@@ -155,12 +155,6 @@
 </style>
 
 <!--<script src="C:\Users\user\Desktop\django-datta-able-master_backUp2\django-datta-able-master\apps\static\assets\js\gauge.js"></script>-->
-<style>
-    #chartdiv {
-        width: 200px;
-        height: 200px;
-    }
-</style>
 
 <div class="pcoded-content">
     <div class="pcoded-inner-content">
@@ -370,6 +364,14 @@
                                 <div style="border-top: 1px solid darkgray; border-bottom: 1px solid darkgray; text-align: left;"
                                      class="mb-1 col-12">
                                     <p>센서 1</p>
+                                         <div class="col-2">
+                                        <div class="gauge">
+                                            <div class="gauge_body">
+                                                <div class="gauge_fill"></div>
+                                                <div class="gauge_cover"></div>
+                                            </div>
+                                        </div>
+                                        </div>
                                     <div class="col-5">
                                         <div class="progress" style="margin-bottom:10px;">
                                             <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60"
@@ -379,58 +381,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="border-top: 1px solid darkgray; border-bottom: 1px solid darkgray; text-align: left;"
-                                     class="mb-1 col-12">
+                                <div style="border-top: 1px solid darkgray; border-bottom: 1px solid darkgray; text-align: left;" class="mb-1 col-12">
                                     <p>센서 2</p>
-                                    <div class="col-5">
+                                        <div class="col-2">
                                         <div class="gauge">
-                                            <div class="gauge__body">
-                                                <div class="gauge__fill"></div>
-                                                <div class="gauge__cover"></div>
+                                            <div class="gauge_body">
+                                                <div class="gauge_fill"></div>
+                                                <div class="gauge_cover"></div>
                                             </div>
                                         </div>
+                                        </div>
+                                    <div class="col-5">
                                         <div class="progress" style="margin-bottom:10px">
                                             <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="70"
                                                  aria-valuemin="0" aria-valuemax="100" style="width:80% ">
                                                 80% Complete (danger)
                                             </div>
                                         </div>
-                                        <script>
-                                            const gaugeElement = document.querySelector('.gauge')
-                                            const gauge__fill = document.querySelector('.gauge__fill')
-
-                                            //  setGaugeValue 함수 매개변수에 value 에 게이지 값을 넣어주면 됩니다.
-
-                                            function setGaugeValue(gauge, value) {
-                                                if (value < 0 || value > 1) {
-                                                    return
-                                                }
-                                                gauge.querySelector('.gauge__fill').style.transform = `rotate(${
-                                                    value / 2 //게이지가 채워 지는 부분 반원을 그리기 위해 2를 나눠줌
-                                                }turn)`
-                                                gauge.querySelector('.gauge__cover').textContent = `${Math.round(
-                                                    value * 100,
-                                                )}%`
-                                            }
-
-                                            //   Interval 함수 사용 타이머 역할
-                                            //   value 는 실수 단위
-
-                                            setInterval(() => {
-                                                for (let i = 0; i < 2; i++) {
-                                                    const ran = Math.random()
-                                                    if (ran < 0.5) {
-                                                        gauge__fill.style.background = '#009578'
-                                                    } else if (ran > 0.5 && ran < 0.8) {
-                                                        gauge__fill.style.background = '#FF9900'
-                                                    } else {
-                                                        gauge__fill.style.background = '#FF0000'
-                                                    }
-                                                    setGaugeValue(gaugeElement, ran)
-                                                    i -= 1
-                                                }
-                                            }, 10 * 1000)
-                                        </script>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -585,6 +553,7 @@
                     </div>
                 </div>
             </div>
+
             <!--[ Recent Users ] end-->
 
             <!--[social-media section] start-->
@@ -1256,6 +1225,43 @@
     </div>
 </div>
 </div>
+    <script>
+        const gaugeElement = document.querySelector(".gauge");
+        const gauge__fill = document.querySelector(".gauge_fill");
+
+        //  setGaugeValue 함수 매개변수에 value 에 게이지 값을 넣어주면 됩니다.
+
+        function setGaugeValue(gauge, value) {
+
+          if (value < 0 || value > 1) {
+            return;
+          }
+          gauge.querySelector(".gauge_fill").style.transform = `rotate(${
+            value / 2 //게이지가 채워 지는 부분 반원을 그리기 위해 2를 나눠줌
+          }turn)`;
+          gauge.querySelector(".gauge_cover").textContent = `${Math.round(
+            value * 100
+          )}%`;
+        }
+        document.removeEventListener("setGaugeValue", setGaugeValue, {
+              passive: false
+        });
+        //   Interval 함수 사용 타이머 역할
+        //   value 는 실수 단위
+
+      setInterval(() => {
+            const ran = Math.random();
+            console.log(ran)
+            if (ran < 0.5) {
+              gauge__fill.style.background = "#009578";
+            } else if (ran > 0.5 && ran < 0.8) {
+              gauge__fill.style.background = "#FF9900";
+            } else {
+              gauge__fill.style.background = "#FF0000";
+            }
+            setGaugeValue(gaugeElement, ran);
+        }, 3 * 1000);
+    </script>
 
 {% endblock content %}
 

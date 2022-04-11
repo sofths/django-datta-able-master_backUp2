@@ -44,13 +44,13 @@ def register_user(request):
             raw_password = form.cleaned_data.get("password1")
             user = authenticate(username=username, password=raw_password,company=company)
 
-            msg = 'User created - please <a href="/login">login</a>.'
+            msg = '가입성공 로그인 해주세요. <a href="/login">login</a>.'
             success = True
 
             # return redirect("/login/")
 
         else:
-            msg = 'Form is not valid'
+            msg = '양식이 올바르지 않습니다.'
     else:
         form = SignUpForm()
 
